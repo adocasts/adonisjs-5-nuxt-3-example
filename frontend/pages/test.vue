@@ -29,10 +29,12 @@
   import useForm from '~/utilities/form'
 
   const toast = useToast()
+
   const user = null
+
   const logoutForm = useForm({}, toast)
   const logout = async () => {
-    await logoutForm.value.post($api('/auth/sign-out'))
+    throw new Error('Not implemented')
     toast.add({ title: 'You have been logged out', timeout: 6000 })
     user.value = null
   }

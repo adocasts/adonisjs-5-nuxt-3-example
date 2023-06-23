@@ -22,7 +22,6 @@
   import useForm from '~/utilities/form'
 
   const toast = useToast()
-  const { $api } = useNuxtApp()
   const form = useForm({
     uid: '',
     password: '',
@@ -30,7 +29,7 @@
   }, toast)
 
   const signIn = async () => {
-    await form.value.post($api('/auth/sign-in'))
+    throw new Error('Not implemented')
     toast.add({ title: 'Welcome back!', timeout: 6000 })
     navigateTo({ path: '/' })
   }
