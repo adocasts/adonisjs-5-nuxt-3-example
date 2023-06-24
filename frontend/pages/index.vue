@@ -36,7 +36,7 @@
 
   const logoutForm = useForm({}, toast)
   const logout = async () => {
-    await logoutForm.value.post($api('/auth/sign-out'))
+    await logoutForm.value.post($api('/auth/sign-out')) 
     toast.add({ title: 'You have been logged out', timeout: 6000 })
     user.value = null
   }
