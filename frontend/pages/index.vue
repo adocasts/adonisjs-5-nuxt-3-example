@@ -29,12 +29,14 @@
   import useForm from '~/utilities/form'
 
   const toast = useToast()
-
-  const user = null
+  
+  const { $api } = useNuxtApp()
+  const headers = useRequestHeaders(['cookie'])
+  const { data: user } = await useFetch($api('/auth'), { headers, credentials: 'include' })
 
   const logoutForm = useForm({}, toast)
   const logout = async () => {
-    throw new Error('Not implemented')
+    await logoutForm.value.post($api('/auth/sign-out'))
     toast.add({ title: 'You have been logged out', timeout: 6000 })
     user.value = null
   }

@@ -30,11 +30,12 @@
 
   const toast = useToast()
 
-  const user = null
+  const { $api } = useNuxtApp()
+  const { data: user } = await useFetch($api('/auth'), { credentials: 'include' })
 
   const logoutForm = useForm({}, toast)
   const logout = async () => {
-    throw new Error('Not implemented')
+    await logoutForm.value.post($api('/auth/sign-out'))
     toast.add({ title: 'You have been logged out', timeout: 6000 })
     user.value = null
   }
